@@ -59,9 +59,9 @@ To finish everything need to seed the data into the table, so 1st need to run
 and add this code to DatabaseSeeder class
 
     //Seed the countries
-    $this->call('CountriesSeeder');
-    $this->call('StatesSeeder');
-    $this->call('CitiesSeeder');
+     $this->call(CountriesSeeder::class);
+     $this->call(StatesSeeder::class);
+     $this->call(CitiesSeeder::class);
 
 You may now run it with the artisan migrate command:
 

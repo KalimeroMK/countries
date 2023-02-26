@@ -1,0 +1,44 @@
+<?php
+
+namespace Database\Seeders;
+
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Kalimeromk\Countries\Models\State;
+
+class StatesSeeder extends Seeder
+{
+
+    public function run()
+    {
+        $this->clearStatesTable();
+        $this->insertState();
+    }
+
+    public function clearStatesTable()
+    {
+        DB::table(Config::get('country.state_table_name'))->delete();
+    }
+
+    public function insertState()
+    {
+        $states = (new State())->getList();
+
+        foreach ($states as $state) {
+            DB::table(Config::get('country.state_table_name'))->insert($this->formatStateData($state));
+        }
+    }
+
+    public function formatStateData($state): array
+    {
+        return [
+            'name' => $state['name'],
+            'country_id' => $state['country_id'] ?? null,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ];
+    }
+
+}

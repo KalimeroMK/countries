@@ -1,0 +1,38 @@
+{
+  "name": "kalimeromk/countries",
+  "description": "Laravel Countries is a package for Laravel, providing Almost ISO 3166_2, 3166_3, currency, Capital and more for all countries.",
+  "type": "package",
+  "license": "MIT",
+  "keywords": [
+    "laravel"
+  ],
+  "authors": [
+    {
+      "name": "Zoran Shefot Bogoevski",
+      "email": "zbogoevski@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Kalimeromk\\Countries\\": "./src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Kalimeromk\\Countries\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Kalimeromk\\Countries\\CountriesServiceProvider"
+      ]
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0"
+  }
+}

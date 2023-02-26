@@ -1,0 +1,48 @@
+<?php
+
+namespace Database\Seeders;
+
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Kalimeromk\Countries\Models\City;
+
+class CitiesSeeder extends Seeder
+{
+
+
+    public function run()
+    {
+        $this->clearCitiesTable();
+        $this->insertCity();
+    }
+
+    public function clearCitiesTable()
+    {
+        DB::table(Config::get('country.city_table_name'))->delete();
+    }
+
+    public function insertCity()
+    {
+        $data = (new City())->getList();
+        $chunkSize = ceil(count($data) / 100);
+        $chunks = array_chunk($data, $chunkSize);
+        foreach ($chunks as $cities) {
+            foreach ($cities as $city) {
+                DB::table(Config::get('country.city_table_name'))->insert($this->formatStateData($city));
+            }
+        }
+    }
+
+    public function formatStateData($city): array
+    {
+        return [
+            'name' => $city['name'],
+            'state_id' => $city['state_id'] ?? null,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ];
+    }
+
+}

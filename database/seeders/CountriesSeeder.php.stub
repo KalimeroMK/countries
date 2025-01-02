@@ -15,12 +15,12 @@ class CountriesSeeder extends Seeder
         $this->insertCountries();
     }
 
-    public function clearCountriesTable()
+    public function clearCountriesTable(): void
     {
         DB::table(Config::get('country.country_table_name'))->delete();
     }
 
-    public function insertCountries()
+    public function insertCountries(): void
     {
         $countries = (new Country())->getList();
 

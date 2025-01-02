@@ -11,18 +11,18 @@ use Kalimeromk\Countries\Models\State;
 class StatesSeeder extends Seeder
 {
 
-    public function run()
+    public function run(): void
     {
         $this->clearStatesTable();
         $this->insertState();
     }
 
-    public function clearStatesTable()
+    public function clearStatesTable(): void
     {
         DB::table(Config::get('country.state_table_name'))->delete();
     }
 
-    public function insertState()
+    public function insertState(): void
     {
         $states = (new State())->getList();
 

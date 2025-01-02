@@ -12,18 +12,18 @@ class CitiesSeeder extends Seeder
 {
 
 
-    public function run()
+    public function run(): void
     {
         $this->clearCitiesTable();
         $this->insertCity();
     }
 
-    public function clearCitiesTable()
+    public function clearCitiesTable(): void
     {
         DB::table(Config::get('country.city_table_name'))->delete();
     }
 
-    public function insertCity()
+    public function insertCity(): void
     {
         $data = (new City())->getList();
         $chunkSize = ceil(count($data) / 100);

@@ -51,14 +51,14 @@ class State extends Model
 
     protected function getStates(): array
     {
-        static $countries;
+        static $states;
 
-        if (!isset($countries)) {
+        if (!isset($states)) {
             $path = __DIR__ . '/../../database/seeders/import/states.json';
-            $countries = json_decode(file_get_contents($path), true);
+            $states = json_decode(file_get_contents($path), true);
         }
 
-        return $countries;
+        return $states;
     }
 
     /**
@@ -76,8 +76,8 @@ class State extends Model
             $validSorts = [
                 'name',
                 'country_id',
-                'create_ad',
-                'update_at'
+                'created_at',
+                'updated_at'
             ];
             if (!in_array($sort, $validSorts)) {
                 throw new InvalidArgumentException("Invalid sort field '$sort'");

@@ -50,17 +50,16 @@ class City extends Model
         return $this->belongsTo(State::class);
     }
 
-
     protected function getCity(): array
     {
-        static $countries;
+        static $cities;
 
-        if (!isset($countries)) {
+        if (!isset($cities)) {
             $path = __DIR__ . '/../../database/seeders/import/cities.json';
-            $countries = json_decode(file_get_contents($path), true);
+            $cities = json_decode(file_get_contents($path), true);
         }
 
-        return $countries;
+        return $cities;
     }
 
     /**
@@ -78,8 +77,8 @@ class City extends Model
             $validSorts = [
                 'name',
                 'state_id',
-                'create_ad',
-                'update_at'
+                'created_at',
+                'updated_at'
             ];
             if (!in_array($sort, $validSorts)) {
                 throw new InvalidArgumentException("Invalid sort field '$sort'");

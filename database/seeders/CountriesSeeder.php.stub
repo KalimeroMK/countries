@@ -24,8 +24,9 @@ class CountriesSeeder extends Seeder
     {
         $countries = (new Country())->getList();
 
-        foreach ($countries as $country) {
-            DB::table(Config::get('country.country_table_name'))->insert($this->formatCountryData($country));
+        foreach ($countries as $id => $country) {
+            // explicit id: states.json/cities.json reference these keys
+            DB::table(Config::get('country.country_table_name'))->insert(['id' => (int) $id] + $this->formatCountryData($country));
         }
     }
 

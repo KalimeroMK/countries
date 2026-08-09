@@ -1,41 +1,41 @@
 {
-  "name": "kalimeromk/countries",
-  "description": "Laravel Countries is a package for Laravel, providing Almost ISO 3166_2, 3166_3, currency, Capital and more for all countries.",
-  "type": "package",
-  "license": "MIT",
-  "keywords": [
-    "laravel"
-  ],
-  "authors": [
-    {
-      "name": "Zoran Shefot Bogoevski",
-      "email": "zbogoevski@gmail.com"
-    }
-  ],
-  "require": {
-        "php": "^7.4 || ^8.0 || ^8.4"
+    "name": "kalimeromk/countries",
+    "description": "Laravel Countries is a package for Laravel, providing Almost ISO 3166_2, 3166_3, currency, Capital and more for all countries.",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Zoran Shefot Bogoevski",
+            "email": "zbogoevski@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1 || ^8.2 || ^8.3 || ^8.4"
     },
-  "autoload": {
-    "psr-4": {
-      "Kalimeromk\\Countries\\": "./src"
+    "autoload": {
+        "psr-4": {
+            "Kalimeromk\\Countries\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kalimeromk\\Countries\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kalimeromk\\Countries\\CountriesServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Kalimeromk\\Countries\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "test": "vendor/bin/phpunit"
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Kalimeromk\\Countries\\CountriesServiceProvider"
-      ]
-    }
-  },
-  "require-dev": {
-    "orchestra/testbench": "^6.0"
-  }
 }
